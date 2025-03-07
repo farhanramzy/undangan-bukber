@@ -1,0 +1,204 @@
+  .container {
+    max-width: 800px;
+    margin: 40px auto;
+    padding: 0 20px;
+    position: relative;
+  }
+  
+  .card {
+    background: var(--white);
+    border-radius: var(--border-radius);
+    overflow: hidden;
+    box-shadow: var(--box-shadow);
+    transform: translateY(0);
+    transition: var(--transition);
+    opacity: 0;
+  }
+  
+  .card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 15px 35px rgba(0,0,0,0.1);
+  }
+  
+  .mainContent {
+    padding: 40px;
+    text-align: center;
+    position: relative;
+  }
+  
+  .arabic {
+    font-family: 'Amiri', serif;
+    font-size: 36px;
+    color: var(--primary);
+    margin: 25px 0;
+    text-align: center;
+    opacity: 0;
+    transform: translateY(20px);
+    transition: var(--transition);
+  }
+  
+  .eventTitle {
+    margin: 40px 0 30px;
+    font-size: 26px;
+    font-weight: 600;
+    color: var(--primary);
+    position: relative;
+    display: inline-block;
+    opacity: 0;
+    transform: translateY(20px);
+    transition: var(--transition);
+  }
+  
+  .eventTitle::after {
+    content: '';
+    position: absolute;
+    bottom: -10px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 50px;
+    height: 3px;
+    background-color: var(--accent);
+    border-radius: 3px;
+  }
+  
+  .decoration1, .decoration2 {
+    position: absolute;
+    opacity: 0.05;
+    z-index: -1;
+  }
+  
+  .decoration1 {
+    top: 20px;
+    right: 20px;
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    background-color: var(--primary);
+    transform: translateX(40px);
+  }
+  
+  .decoration2 {
+    bottom: 60px;
+    left: 20px;
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    background-color: var(--accent);
+    transform: translateX(-30px);
+  }
+  
+  .button {
+    display: inline-block;
+    padding: 14px 34px;
+    background: linear-gradient(135deg, var(--primary) 0%, var(--primary-light) 100%);
+    color: var(--white);
+    text-decoration: none;
+    border-radius: 50px;
+    font-weight: 600;
+    margin-top: 20px;
+    transition: var(--transition);
+    border: none;
+    cursor: pointer;
+    position: relative;
+    overflow: hidden;
+    box-shadow: 0 6px 15px rgba(18, 92, 19, 0.2);
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  
+  .button::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+    transition: 0.5s;
+  }
+  
+  .button:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 10px 20px rgba(18, 92, 19, 0.3);
+  }
+  
+  .button:hover::after {
+    left: 100%;
+  }
+  
+  .footer {
+    text-align: center;
+    margin-top: 40px;
+    color: var(--text-light);
+    font-size: 14px;
+    padding-bottom: 20px;
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  
+  /* Animations */
+  .fadeIn {
+    opacity: 1;
+    animation: fadeIn 1s ease-in forwards;
+  }
+  
+  .slideUp {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.5s ease, transform 0.5s ease;
+  }
+  
+  .slideInRight {
+    opacity: 0;
+    transform: translateX(20px);
+    transition: opacity 0.5s ease, transform 0.5s ease;
+  }
+  
+  .slideInLeft {
+    opacity: 0;
+    transform: translateX(-20px);
+    transition: opacity 0.5s ease, transform 0.5s ease;
+  }
+  
+  .visible {
+    opacity: 1;
+    transform: translate(0, 0);
+  }
+  
+  @keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+  }
+  
+  @media (max-width: 768px) {
+    .container {
+      margin: 20px auto;
+    }
+    
+    .mainContent {
+      padding: 30px 20px;
+    }
+    
+    .eventTitle {
+      font-size: 22px;
+    }
+    
+    .arabic {
+      font-size: 30px;
+    }
+    
+    .decoration1, .decoration2 {
+      display: none;
+    }
+  }
+  
+  @media (max-width: 480px) {
+    .eventTitle {
+      font-size: 20px;
+    }
+    
+    .button {
+      padding: 12px 28px;
+      font-size: 14px;
+    }
+  }
