@@ -1,0 +1,112 @@
+.timelineContainer {
+    margin: 50px 0;
+    position: relative;
+  }
+  
+  .timelineTitle {
+    text-align: center;
+    font-size: 20px;
+    color: var(--primary);
+    margin-bottom: 30px;
+    position: relative;
+  }
+  
+  .timelineTitle::after {
+    content: '';
+    position: absolute;
+    bottom: -10px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 50px;
+    height: 2px;
+    background-color: var(--accent);
+  }
+  
+  .timeline {
+    position: relative;
+    max-width: 500px;
+    margin: 0 auto;
+    padding: 20px 0;
+  }
+  
+  .timelineLine {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 50%;
+    width: 2px;
+    background-color: var(--primary-light);
+    transform: translateX(-50%);
+  }
+  
+  .timelineEvent {
+    position: relative;
+    margin-bottom: 30px;
+    display: flex;
+  }
+  
+  .timelineEvent:nth-child(odd) {
+    flex-direction: row-reverse;
+  }
+  
+  .timelineMarker {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background-color: var(--primary);
+    border: 3px solid var(--bg-light);
+    z-index: 1;
+  }
+  
+  .timelineContent {
+    width: 45%;
+    padding: 15px;
+    background: var(--glass-bg);
+    backdrop-filter: blur(10px);
+    border: 1px solid var(--glass-border);
+    box-shadow: var(--glass-shadow);
+    border-radius: var(--border-radius);
+  }
+  
+  .timelineYear {
+    color: var(--primary);
+    font-weight: 600;
+    font-size: 14px;
+    margin-bottom: 5px;
+  }
+  
+  .timelineEventTitle {
+    font-size: 16px;
+    margin-bottom: 8px;
+  }
+  
+  .timelineDescription {
+    font-size: 14px;
+    color: var(--text-light);
+  }
+  
+  @media (max-width: 768px) {
+    .timeline {
+      max-width: 100%;
+    }
+    
+    .timelineLine {
+      left: 20px;
+    }
+    
+    .timelineEvent, .timelineEvent:nth-child(odd) {
+      flex-direction: row;
+      margin-left: 40px;
+    }
+    
+    .timelineMarker {
+      left: 20px;
+    }
+    
+    .timelineContent {
+      width: 100%;
+    }
+  }

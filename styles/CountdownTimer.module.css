@@ -1,46 +1,97 @@
 .countdown {
     margin: 40px 0;
+    position: relative;
+  }
+  
+  .countdownTitle {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 30px;
+  }
+  
+  .countdownTitle h3 {
+    font-size: 18px;
+    font-weight: 600;
+    color: var(--primary);
+    margin: 0 15px;
+  }
+  
+  .darkCountdown .countdownTitle h3 {
+    color: var(--dark-primary-light);
+  }
+  
+  .decorativeLine {
+    width: 60px;
+    height: 1px;
+    background-color: var(--accent);
+  }
+  
+  .darkCountdown .decorativeLine {
+    background-color: var(--dark-accent);
+  }
+  
+  .countdownItems {
     display: flex;
     justify-content: center;
-    gap: 15px;
-    opacity: 0;
-    transform: translateY(20px);
-    transition: var(--transition);
+    gap: 20px;
   }
   
   .countdownItem {
-    width: 80px;
-    height: 80px;
+    position: relative;
+    width: 100px;
+    height: 100px;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    position: relative;
   }
   
-  .countdownItem::before {
-    content: '';
+  .svgBorder {
     position: absolute;
+    top: 0;
+    left: 0;
     width: 100%;
     height: 100%;
-    background-color: var(--primary);
-    opacity: 0.1;
-    border-radius: 10px;
-    transform: rotate(45deg);
-    transition: var(--transition);
+    z-index: 0;
   }
   
-  .countdownItem:hover::before {
-    transform: rotate(0deg);
-    opacity: 0.15;
+  .circleBg {
+    fill: none;
+    stroke: rgba(18, 92, 19, 0.1);
+    stroke-width: 3;
+  }
+  
+  .darkCountdown .circleBg {
+    stroke: rgba(78, 39, 204, 0.1);
+  }
+  
+  .circleIndicator {
+    fill: none;
+    stroke: var(--primary);
+    stroke-width: 3;
+    stroke-dasharray: 283;
+    stroke-dashoffset: 283;
+    stroke-linecap: round;
+    transform: rotate(-90deg);
+    transform-origin: 50% 50%;
+    animation: countdown 60s linear infinite;
+  }
+  
+  .darkCountdown .circleIndicator {
+    stroke: var(--dark-primary-light);
   }
   
   .countdownValue {
-    font-size: 28px;
+    font-size: 32px;
     font-weight: bold;
     color: var(--primary);
     position: relative;
     z-index: 1;
+  }
+  
+  .darkCountdown .countdownValue {
+    color: var(--dark-primary-light);
   }
   
   .countdownLabel {
@@ -50,40 +101,59 @@
     color: var(--text-light);
     text-transform: uppercase;
     letter-spacing: 1px;
+    margin-top: 5px;
   }
   
-  .visible {
-    opacity: 1;
-    transform: translateY(0);
+  .darkCountdown .countdownLabel {
+    color: var(--dark-text-light);
+  }
+  
+  @keyframes countdown {
+    to {
+      stroke-dashoffset: 0;
+    }
   }
   
   @media (max-width: 768px) {
-    .countdown {
+    .countdownItems {
       flex-wrap: wrap;
+      gap: 15px;
     }
     
+    .countdownItem {
+      width: 80px;
+      height: 80px;
+    }
+    
+    .countdownValue {
+      font-size: 26px;
+    }
+    
+    .countdownLabel {
+      font-size: 12px;
+    }
+    
+    .countdownTitle h3 {
+      font-size: 16px;
+    }
+    
+    .decorativeLine {
+      width: 40px;
+    }
+  }
+  
+  @media (max-width: 480px) {
     .countdownItem {
       width: 70px;
       height: 70px;
     }
     
     .countdownValue {
-      font-size: 24px;
+      font-size: 22px;
     }
     
     .countdownLabel {
-      font-size: 12px;
+      font-size: 10px;
     }
   }
   
-  @media (max-width: 480px) {
-    .countdownItem {
-      width: 60px;
-      height: 60px;
-      margin-bottom: 10px;
-    }
-    
-    .countdownValue {
-      font-size: 20px;
-    }
-  }
